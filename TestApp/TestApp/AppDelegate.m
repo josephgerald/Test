@@ -7,16 +7,23 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 @implementation AppDelegate
+
+@synthesize navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    ViewController *loginView = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:loginView];
+    self.navigationController.navigationBarHidden = YES;
+    self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
+    
     return YES;
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
